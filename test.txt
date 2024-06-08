@@ -1,0 +1,10 @@
+
+
+
+https://simplyfaqs.com/topic/22/?smah=84OVMrV&g_ci={{campaign.id}}&g_ai={{adset.id}}&g_adi={{ad.id}}&ekw={encoded_keywords}&rac={{ad.name}}&site={{placement}}
+https://faqsclub.com/topic/22/?smah=G16i1b8&g_ci={{campaign.id}}&g_ai={{adset.id}}&g_adi={{ad.id}}&ekw={encoded_keywords}&rac={{ad.name}}&site={{placement}}
+https://instantfaqs.com/topic/222/?smah=13309M3&g_ci={{campaign.id}}&g_ai={{adset.id}}&g_adi={{ad.id}}&ekw={encoded_keywords}&rac={{ad.name}}&site={{placement}}
+https://www.seniorsdecision.com/post/affordable-seniors-dental-implants?rac={keyword}&utm_source=facebook&placement={{placement}}&cid={{campaign.id}}&adgid={{adset.id}}&adid={{ad.id}}
+https://thinkfaqs.com/topic/222/?smah=37F1e12&g_ci={{campaign.id}}&g_ai={{adset.id}}&g_adi={{ad.id}}&ekw={encoded_keywords}&rac={{ad.name}}&site={{placement}}
+https://knowledgedesk.net/topic/222/?smah=317875Y&g_ci={{campaign.id}}&g_ai={{adset.id}}&g_adi={{ad.id}}&ekw={encoded_keywords}&rac={{ad.name}}&site={{placement}}
+
