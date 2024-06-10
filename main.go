@@ -16,13 +16,13 @@ type SynonymResponse struct {
 	Synonyms []string `json:"synonyms"`
 }
 
-type Variation struct {
-	Phrase string   `json:"phrase"`
-	URLs   []string `json:"urls"`
+type SearchResult struct {
+	Title string `json:"title"`
+	URL   string `json:"url"`
 }
 
 type Response struct {
-	Variations []Variation `json:"variations"`
+	Results []SearchResult `json:"results"`
 }
 
 func getSynonyms(word string) []string {
@@ -57,7 +57,7 @@ func generateVariations(phrase string) []string {
 		for _, syn := range synonyms {
 			newPhrase := strings.Replace(phrase, token.Text, syn, 1)
 			variations = append(variations, newPhrase)
-			if len(variations) >= 4 {
+			if len(variations) >= 7 {
 				return variations
 			}
 		}
@@ -88,7 +88,7 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 
 	urls := []string{
 		"https://www.gileq.com/dsr?q=",
-		"https://searchalike.com/dsr?q=",
+		"https://search.searchalike.com/serp?q=",
 		"https://uk.questtips.com/dsr?q=",
 		"https://www.novafluxa.com/dsr?q=",
 		"https://explorewebzone.com/dsr?q=",
@@ -102,18 +102,16 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 
 	var response Response
 
-	for _, variation := range variations {
-		var variationURLs []string
-
-		for _, baseUrl := range urls {
-			fullUrl := addQueryParam(baseUrl, variation)
-			variationURLs = append(variationURLs, fullUrl)
+	// Ensure each URL receives only one unique variation
+	for i, variation := range variations {
+		if i < len(urls) {
+			fullUrl := addQueryParam(urls[i], variation)
+			response.Results = append(response.Results, SearchResult{Title: variation, URL: fullUrl})
+		} else {
+			// if more variations than URLs, repeat the URL list
+			fullUrl := addQueryParam(urls[i%len(urls)], variation)
+			response.Results = append(response.Results, SearchResult{Title: variation, URL: fullUrl})
 		}
-
-		response.Variations = append(response.Variations, Variation{
-			Phrase: variation,
-			URLs:   variationURLs,
-		})
 	}
 
 	jsonResponse, err := json.MarshalIndent(response, "", "  ")
