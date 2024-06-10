@@ -1,6 +1,6 @@
 module github.com/safciplak/ads
 
-go 1.21.5
+go 1.21
 
 require (
 	github.com/dghubble/sling v1.4.2
